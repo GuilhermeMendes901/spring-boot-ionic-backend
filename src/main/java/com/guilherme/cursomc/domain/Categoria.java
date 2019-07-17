@@ -2,12 +2,20 @@ package com.guilherme.cursomc.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 //Serializable é uma interface que diz que essa classe aqui (Categoria) os objetos dela podera ser convertido para uma sequencia de bits, isso serve para que o objetos possam ser gravados em arquivos.
 //HashCod and Equals compara pelo conteudo, eles sao operações para comparar os objetos por valor
 
+@Entity
 public class Categoria implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY) //Aqui eu defino a estrategia de geração altomatimas dos Ids.
 	private Integer id;
 	private String nome;
 	
