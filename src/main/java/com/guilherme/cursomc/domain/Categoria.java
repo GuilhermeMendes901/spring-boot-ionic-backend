@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 //Serializable é uma interface que diz que essa classe aqui (Categoria) os objetos dela podera ser convertido para uma sequencia de bits, isso serve para que o objetos possam ser gravados em arquivos.
 //HashCod and Equals compara pelo conteudo, eles sao operações para comparar os objetos por valor
 
@@ -22,6 +24,7 @@ public class Categoria implements Serializable{
 	private Integer id;
 	private String nome;
 	
+	@JsonManagedReference //Da prioridade na hora da busca da "List"
 	@ManyToMany(mappedBy = "categorias")
 	private List<Produto> produtos = new ArrayList<>();
 	
