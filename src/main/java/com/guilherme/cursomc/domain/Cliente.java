@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,6 +33,8 @@ public class Cliente implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+	
+	@Column(unique=true) //serve para que tenha somente um e-mail por vez e não e-mails iguais (mas so isso não é o suficiente, pois isso só faz com que o banco bloquei o cad)
 	private String email;
 	private String cpfOuCnpj;
 	private Integer tipo;
