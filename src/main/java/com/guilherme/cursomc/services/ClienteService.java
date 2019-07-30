@@ -2,6 +2,8 @@ package com.guilherme.cursomc.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -38,6 +40,7 @@ public class ClienteService {
 		return obj;
 	}
 	
+	@Transactional
 	public Cliente insert(Cliente obj) {
 		obj.setId(null);
 		obj = repo.save(obj);
@@ -57,7 +60,7 @@ public class ClienteService {
 			repo.delete(id);
 		}
 		catch(DataIntegrityViolationException e) {
-			throw new DataIntegrityException("Não é possivel excluir pois há entidades relacionadas");
+			throw new DataIntegrityException("Não é possivel excluir pois há pedidos relacionadas");
 		}
 	}
 	

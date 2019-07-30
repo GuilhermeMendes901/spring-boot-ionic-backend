@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -35,7 +36,7 @@ public class Cliente implements Serializable {
 	private String cpfOuCnpj;
 	private Integer tipo;
 	
-	@OneToMany(mappedBy="cliente")
+	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL) //Cascadetype.all: quando eu quiser que algo que não esteja relacionado com a tabela diretamente seja pega de tabela, inserir essa função (Ex: para conseguir deletar o cliente precisaria deletar o endreço, com o end indo de tabela, é possivel deletar)
 	private List<Endereco> enderecos = new ArrayList<>();
 	
 	//Conjunto de Strings.
