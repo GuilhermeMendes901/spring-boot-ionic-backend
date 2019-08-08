@@ -7,6 +7,6 @@ import com.guilherme.cursomc.domain.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Integer>{
 
-	@Transactional(readOnly=true)
-	Cliente findByEmail(String email);
+	@Transactional(readOnly=true) //@Transactional, faz com que o metodo que passei embaixo não precise ser necessariamente envolvida diretamente com o banco de dados.
+	Cliente findByEmail(String email); //só esse metodo "FindByEmail só ele já é necessario para achar um email no meu banco, logico passando uma string email como paramentro.
 }

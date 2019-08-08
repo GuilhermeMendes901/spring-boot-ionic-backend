@@ -34,7 +34,7 @@ public class Cliente implements Serializable {
 	private Integer id;
 	private String nome;
 	
-	@Column(unique=true) //serve para que tenha somente um e-mail por vez e não e-mails iguais (mas so isso não é o suficiente, pois isso só faz com que o banco bloquei o cad)
+	@Column(unique=true) //(impossivel que haja 2 e-mails iguais) serve para que tenha somente um e-mail por vez e não e-mails iguais (mas so isso não é o suficiente, pois isso só faz com que o banco bloquei o cad)
 	private String email;
 	private String cpfOuCnpj;
 	private Integer tipo;
