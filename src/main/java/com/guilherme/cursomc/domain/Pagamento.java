@@ -11,12 +11,14 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.guilherme.cursomc.domain.enums.EstadoPagamento;
 
 //abstract para nunca conseguir instanciar um "Pagamento pagto = new Pagamento()".
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED) //O famoso tabela/tabela ou tabelao.
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
 public abstract class Pagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -61,7 +63,7 @@ public abstract class Pagamento implements Serializable {
 		return pedido;
 	}
 
-	public void setPedio(Pedido pedido) {
+	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
 	}
 
